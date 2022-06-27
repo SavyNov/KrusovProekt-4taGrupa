@@ -1,8 +1,5 @@
 package sit.tuvarna.bg;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 public class Student {
     protected StringBuilder name;
     protected String facultyNumber;
@@ -12,8 +9,6 @@ public class Student {
     protected String status;
     protected float AverageGrade;
     protected Discipline disc;
-
-
     public Student(StringBuilder name, String facultyNumber,int year, Major major, int group, String status) {
         this.name = name;
         this.facultyNumber = facultyNumber;
@@ -27,24 +22,55 @@ public class Student {
         this.major.setGrade(disc,grade);
     }
 
-    public float calculateAverageGrade(){  //tozi method ne raboti
+    public float calculateAverageGrade(){
         for(Discipline d : this.major.disciplineList ){
             if(this.major.getGrade(d) > 2f) {
-                System.out.println("Successful exams: \n");
-                System.out.println(this.major.getName(d) + " with grade " + this.major.getGrade(d));
+                System.out.println("Passed: " + this.major.getName(d) + " with grade " + this.major.getGrade(d));
+                AverageGrade += this.major.getGrade(d);
             }
             else if(this.major.getGrade(d) <= 2f){
-                System.out.println("Failed exams: \n");
-                System.out.println( this.major.getName(d) + " with grade " + this.major.getGrade(d));
+               System.out.println("Failed: " + this.major.getName(d) + " with grade " + this.major.getGrade(d));
+                AverageGrade += this.major.getGrade(d);
             }
-            AverageGrade += this.major.getGrade(d);
         }
-        System.out.println("Average grade: ");
+        System.out.println("Average grade: " + AverageGrade/this.major.disciplineList.size());
         return AverageGrade;
     }
+
+
+    public void setMajor(String major) {
+        this.major.name = major;
+    }
+    public void setGroup(int group) {
+        this.group = group;
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public StringBuilder getName() {
+        return name;
+    }
+    public String getFacultyNumber() {
+        return facultyNumber;
+    }
+    public int getYear() {
+        return year;
+    }
+    public Major getMajor() {
+        return major;
+    }
+    public int getGroup() {
+        return group;
+    }
+    public String getStatus() {
+        return status;
+    }
+    public float getAverageGrade() {
+        return AverageGrade;
+    }
+
     @Override
     public String toString() {
-       return "Student " + this.name + this.facultyNumber + " from " + this.major + " with disciplines " + major.toString();
+        return "Student " + this.name + " - " + this.facultyNumber + " from " + this.major + " in year " + this.year;
     }
 }
-

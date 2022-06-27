@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OOP1 Kursova:jar">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="OOP1 Kursova.jar">
+      <element id="module-output" name="OOP1 Kursova" />
+    </root>
+  </artifact>
+</component>

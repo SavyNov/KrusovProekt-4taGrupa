@@ -1,8 +1,7 @@
 package sit.tuvarna.bg;
 
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 
 public class Main {
 
@@ -10,19 +9,29 @@ public class Main {
         Discipline oop = new Discipline("OOP","mandatory");
         Discipline ps = new Discipline("PS","mandatory");
         Discipline gs = new Discipline("GS","mandatory");
-        Discipline mpt = new Discipline("MPT","mandatory");
+        Discipline mpt = new Discipline("MPT","optional");
         Discipline sport = new Discipline("Sport","optional");
-
-        Discipline[] disciplines = {oop,ps,gs,mpt,sport};
-
+        Discipline sa = new Discipline("SA","mandatory");
+        Discipline cs = new Discipline("CS", "optional");
         Major sit = new Major("SIT");
-        for (Discipline s : disciplines){
+        Major kst = new Major("KST");
+        ArrayList<Discipline> disciplines = new ArrayList<>();
+        Discipline[] sitDisciplines = {oop,ps,gs,mpt,sport};
+        Discipline[] kstDisciplines = {oop,ps,sport,sa,cs};
+
+        Major[] majors = {sit,kst};
+        for (Discipline s : sitDisciplines){
             sit.addToArray(s);
+            disciplines.add(s);
+        }
+        for (Discipline s : kstDisciplines){
+            kst.addToArray(s);
+            disciplines.add(s);
         }
 
-        Student student = new Student(new StringBuilder("Ivan"), "20621587",2, sit, 2, "studying");
-        student.addGrade(gs, 5F);
-        student.calculateAverageGrade();
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.Menu(majors,disciplines);
+
 
     }
 }

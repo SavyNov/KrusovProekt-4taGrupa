@@ -23,13 +23,12 @@ public class Discipline {
     public void setGrade(float grade) {
         this.grade = grade;
     }
-
     public float getGrade() {
         return grade;
     }
 
     @Override
     public String toString() {
-        return  name + " which is " + type + " with grade " + grade;
+        return  name ;
     }
 }
